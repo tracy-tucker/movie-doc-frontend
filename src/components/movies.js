@@ -23,6 +23,6 @@ class Movies {
 
     //call this method AFTER app grabs all movies
     render() {
-        this.moviesContainer.innerHTML = this.movies.map(movie => `<li>${movie.title}</li>`).join(' ')
+        this.moviesContainer.innerHTML = this.movies.map(movie => movie.renderLi()).join(' ')
     }
 }
