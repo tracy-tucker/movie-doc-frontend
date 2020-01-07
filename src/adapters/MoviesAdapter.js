@@ -1,4 +1,4 @@
-//Talks to the backend API
+//Communicates with the API
 class MoviesAdapter {
     constructor() {
         this.baseUrl = 'http://localhost:3000/api/v1/movies'
