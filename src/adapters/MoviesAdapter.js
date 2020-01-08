@@ -9,9 +9,27 @@ class MoviesAdapter {
         this.movieFormDiv = document.getElementById('new-movie-form')
     }
 
+    getMovies() {
+        return fetch(this.baseUrl).then(res => res.json()
+        )
+    }
+
+    createMovies(jsonObject) {
+        const movie = {
+            body: jsonObject
+        }
+        return fetch(this.baseUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'appliction/json'
+            },
+            body: JSON.stringify(movie)
+        })
+    }
+
     renderNewMovieForm() {
-        const new_movie_button = document.getElementById('new-movie-button')
-        new_movie_button.parentNode.removeChild('new_movie_button') //Removes button once it has been clicked
+        // const new_movie_button = document.getElementById('new-movie-button')
+        // new_movie_button.parentNode.removeChild('new_movie_button') //Removes button once it has been clicked
 
         const movie_form = document.createElement('form') //creates new form element
         movie_form.id = 'new-movie-form'
@@ -52,14 +70,9 @@ class MoviesAdapter {
 			for (const [key, value] of form_data.entries()) {
 				jsonObject[key] = value
 			}
-			this.createPrimaryComment(jsonObject)
+			this.createMovies(jsonObject)
 		})
 
-    }
-
-    getMovies() {
-        return fetch(this.baseUrl).then(res => res.json()
-        )
     }
 
 }
