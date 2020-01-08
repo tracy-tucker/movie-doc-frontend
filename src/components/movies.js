@@ -10,7 +10,7 @@ class Movies {
     initBindingAndEventListeners() {
         this.moviesContainer = document.getElementById('movies-container')
         this.movieFormDiv = document.getElementById('new-movie-form')
-        this.movieForm.addEventListener('submit', this.createMovie.bind(this))
+        // this.movieForm.addEventListener('submit', this.createMovie.bind(this))
     }
 
     createNewMovieButton() {
@@ -23,12 +23,6 @@ class Movies {
         this.movieFormDiv.append(new_movie_button)
         new_movie_button.addEventListener('click', this.adapter.renderNewMovieForm.bind(this.adapter))
     }
-
-    // createMovie(e) {
-    //     console.log(this)
-    //     e.preventDefault()
-    //     console.log(this.newMovieTitle.value)
-    // }
 
     fetchAndLoadMovies() {
         this.adapter
