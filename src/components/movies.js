@@ -10,7 +10,6 @@ class Movies {
     initBindingAndEventListeners() {
         this.moviesContainer = document.getElementById('movies-container')
         this.movieFormDiv = document.getElementById('new-movie-form')
-        // this.movieForm.addEventListener('submit', this.createMovie.bind(this))
     }
 
     createNewMovieButton() {

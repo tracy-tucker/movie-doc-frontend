@@ -21,7 +21,7 @@ class MoviesAdapter {
         return fetch(this.baseUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'appliction/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(movie)
         })
@@ -61,6 +61,60 @@ class MoviesAdapter {
 
         const titleBreak = document.createElement('br')
         movie_form.appendChild(titleBreak)
+
+        const genreLabel = document.createElement('label') //creates label for genre field
+        genreLabel.innerHTML = "Movie Genre: " //sets the field label
+        movie_form.appendChild(genreLabel)
+
+        const inputGenre = document.createElement('input') //created input field for genre
+        inputGenre.setAttribute('type', 'number')
+        inputGenre.setAttribute('genre', 'dgenre')
+        movie_form.appendChild(inputGenre)
+
+        const genreBreak = document.createElement('br')
+        movie_form.appendChild(genreBreak)
+
+        const yearLabel = document.createElement('label') //creates label for year field
+        yearLabel.innerHTML = "Movie Year: " //sets the field label
+        movie_form.appendChild(yearLabel)
+
+        const inputYear = document.createElement('input') //created input field for year
+        inputYear.setAttribute('type', 'text')
+        inputYear.setAttribute('year', 'dyear')
+        movie_form.appendChild(inputYear)
+
+        const yearBreak = document.createElement('br')
+        movie_form.appendChild(yearBreak)
+
+        const ratingLabel = document.createElement('label') //creates label for rating field
+        ratingLabel.innerHTML = "Movie Rating: " //sets the field label
+        movie_form.appendChild(ratingLabel)
+
+        const inputRating = document.createElement('input') //created input field for rating
+        inputRating.setAttribute('type', 'text')
+        inputRating.setAttribute('rating', 'drating')
+        movie_form.appendChild(inputRating)
+
+        const ratingBreak = document.createElement('br')
+        movie_form.appendChild(ratingBreak)
+
+        const descriptionLabel = document.createElement('label') //creates label for description field
+        descriptionLabel.innerHTML = "Movie Description: " //sets the field label
+        movie_form.appendChild(descriptionLabel)
+
+        const inputDescription = document.createElement('input') //created input field for description
+        inputDescription.setAttribute('type', 'textarea')
+        inputDescription.setAttribute('description', 'ddescription')
+        movie_form.appendChild(inputDescription)
+
+        const descBreak = document.createElement('br')
+        movie_form.appendChild(descBreak)
+
+        const submitElement = document.createElement('input') //Append submit button
+        submitElement.setAttribute('type', 'submit')
+        submitElement.setAttribute('name', 'dsubmit')
+        submitElement.setAttribute('value', 'Record Movie')
+        movie_form.appendChild(submitElement)
 
 
         movie_form.addEventListener("submit", (e) => {
