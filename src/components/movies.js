@@ -8,6 +8,14 @@ class Movies {
 
     initBindingAndEventListeners() {
         this.moviesContainer = document.getElementById('movies-container')
+        this.movieForm = document.getElementById('new-movie-form')
+        this.movieForm.addEventListener('submit', this.createMovie.bind(this))
+    }
+
+    createMovie(e) {
+        console.log(this)
+        e.preventDefault()
+        console.log(this.newMovieTitle.value)
     }
 
     fetchAndLoadMovies() {

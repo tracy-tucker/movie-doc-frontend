@@ -1,5 +1,5 @@
 function newMovieForm() {
-    const movie_form_div = document.getElementById('new-movie-form')
+    const movie_form_div = document.getElementById('new-movie-container')
     const movie_form = document.createElement('form') //creates the new form element
     movie_form.setAttribute("action", "") //sets action attribute on form
     movie_form.setAttribute("method", "POST") //set method attribute on form
@@ -21,8 +21,7 @@ function newMovieForm() {
     inputTitle.setAttribute('title', 'dtitle')
     movie_form.appendChild(inputTitle)
 
-    const linebreak = document.createElement('br')
-    movie_form.appendChild(linebreak)
+
 
     const genreLabel = document.createElement('label') //creates label for genre field
     genreLabel.innerHTML = "Movie Genre: " //sets the field label
@@ -33,8 +32,7 @@ function newMovieForm() {
     inputGenre.setAttribute('genre', 'dgenre')
     movie_form.appendChild(inputGenre)
 
-    const linebreak = document.createElement('br')
-    movie_form.appendChild(linebreak)
+ 
 
     const yearLabel = document.createElement('label') //creates label for year field
     yearLabel.innerHTML = "Movie Year: " //sets the field label
@@ -45,8 +43,7 @@ function newMovieForm() {
     inputYear.setAttribute('year', 'dyear')
     movie_form.appendChild(inputYear)
 
-    const linebreak = document.createElement('br')
-    movie_form.appendChild(linebreak)
+ 
 
     const ratingLabel = document.createElement('label') //creates label for rating field
     ratingLabel.innerHTML = "Movie Rating: " //sets the field label
@@ -57,8 +54,7 @@ function newMovieForm() {
     inputRating.setAttribute('rating', 'drating')
     movie_form.appendChild(inputRating)
 
-    const linebreak = document.createElement('br')
-    movie_form.appendChild(linebreak)
+
 
     const descriptionLabel = document.createElement('label') //creates label for description field
     descriptionLabel.innerHTML = "Movie Description: " //sets the field label
@@ -69,8 +65,7 @@ function newMovieForm() {
     inputDescription.setAttribute('description', 'ddescription')
     movie_form.appendChild(inputDescription)
 
-    const linebreak = document.createElement('br')
-    movie_form.appendChild(linebreak)
+ 
 
     const submitElement = document.createElement('input') //Append submit button
     submitElement.setAttribute('type', 'submit')
