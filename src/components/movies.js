@@ -3,20 +3,32 @@ class Movies {
         this.movies = []
         this.adapter = new MoviesAdapter() //creates a new adapter
         this.initBindingAndEventListeners() //envokes this method
+        this.createNewMovieButton() //calls the movie button function created below
         this.fetchAndLoadMovies()
     }
 
     initBindingAndEventListeners() {
         this.moviesContainer = document.getElementById('movies-container')
-        this.movieForm = document.getElementById('new-movie-form')
+        this.movieFormDiv = document.getElementById('new-movie-form')
         this.movieForm.addEventListener('submit', this.createMovie.bind(this))
     }
 
-    createMovie(e) {
-        console.log(this)
-        e.preventDefault()
-        console.log(this.newMovieTitle.value)
+    createNewMovieButton() {
+        this.movieFormDiv.innerHTML = ''
+        const new_movie_button = document.createElement('button')
+        new_movie_button.id = 'new-movie-button'
+        new_movie_button.innerText = 'Record a Movie'
+        const linebreak = document.createElement('br')
+        new_movie_button.appendChild(linebreak)
+        this.movieFormDiv.append(new_movie_button)
+        new_movie_button.addEventListener('click', this.adapter.renderNewMovieForm.bind(this.adapter))
     }
+
+    // createMovie(e) {
+    //     console.log(this)
+    //     e.preventDefault()
+    //     console.log(this.newMovieTitle.value)
+    // }
 
     fetchAndLoadMovies() {
         this.adapter
