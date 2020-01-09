@@ -1,6 +1,6 @@
 //Communicates with the API
 class MoviesAdapter {
-    constructor(value) {
+    constructor() {
         this.baseUrl = 'http://localhost:3000/api/v1/movies'
         this.initBindingAndEventListeners()
     }
@@ -16,7 +16,7 @@ class MoviesAdapter {
     createMovies(jsonObject) {
         const movie = {
             title: jsonObject.title,
-            genre: jsonObject.genre,
+            genre_id: jsonObject.genre_id,
             year: jsonObject.year,
             rating: jsonObject.rating,
             description: jsonObject.description
@@ -25,7 +25,7 @@ class MoviesAdapter {
         return fetch(this.baseUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json', 'Accept': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(movie)
         })
@@ -123,7 +123,7 @@ class MoviesAdapter {
 
 
         movie_form.addEventListener("submit", (e) => {
-			e.preventDefault()
+            e.preventDefault()
 			let form_data = new FormData(movie_form)
 			let jsonObject = {}
 			for (const [key, value] of form_data.entries()) {
