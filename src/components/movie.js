@@ -9,8 +9,7 @@ class Movie {
     }
 
     renderLi() {
-        return `<h2>All Saved Movies</h2>
-        <ul>
+        return `<ul>
             <li>${this.title}</li>
             <li>${this.genre_id}</li>
             <ul>
