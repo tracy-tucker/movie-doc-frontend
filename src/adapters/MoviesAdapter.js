@@ -26,6 +26,19 @@ class MoviesAdapter {
         })
     }
 
+    updateMovie(value, id) {
+        const movie = {
+            movie: value
+        }
+        return fetch(`${this.baseUrl}/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(movie)
+        })
+    }
+
     // createMovies(jsonObject) {
     //     const movie = {
     //         title: jsonObject.title,

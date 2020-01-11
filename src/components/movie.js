@@ -8,9 +8,9 @@ class Movie {
         this.genre_id = movieJSON.genre_id
     }
 
-    renderLi() {
+    renderLi() { //ID IS COMING IN AS UNDEFINED!
         return `<ul>
-            <li>${this.title}</li>
+            <li data-id=${this.id}>${this.title}</li>
             <li>${this.genre_id}</li>
             <ul>
                 <li>${this.year}</li>

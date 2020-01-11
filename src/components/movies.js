@@ -9,6 +9,7 @@ class Movies {
 
     initBindingAndEventListeners() {
         this.moviesContainer = document.getElementById('movies-container')
+        this.movieContainer = document.querySelector('title') //THIS NEEDS TO BE FOR ALL PROPERTIES NOT WORKING
         this.newMovieTitle = document.getElementById('new-movie-title')
         this.newMovieGenre = document.getElementById('new-movie-genre')
         this.newMovieYear = document.getElementById('new-movie-year')
@@ -17,6 +18,7 @@ class Movies {
         this.movieForm = document.getElementById('new-movie-form')
         this.movieForm.addEventListener('submit', this.createMovie.bind(this)) //binding "this" to Movie, and not the movie-form
         this.moviesContainer.addEventListener('dblclick', this.handleMovieClick.bind(this))
+        this.movieContainer.addEventListener('blur', this.updateMovie.bind(this), true) //NOT WORKING
     }
 
     createMovie(e) {
@@ -39,8 +41,23 @@ class Movies {
     }
 
     handleMovieClick(e) {
+        this.toggleMovie(e)
+    }
+
+    toggleMovie(e) {
         const li = e.target
         li.contentEditable = true
+        li.focus()
+        li.classList.add('editable')
+    }
+
+    updateMovie(e) {
+        const li = e.target
+        li.contentEditable = false
+        li.classList.remove('editable') //NOT WORKING
+        const newValue = li.innerHTML
+        const id = li.dataset.id
+        this.adapter.updateMovie(newValue, id)
     }
 
     // createNewMovieButton() {
@@ -58,7 +75,7 @@ class Movies {
         this.adapter
         .getMovies() //gets movies from server
         .then(movies => {
-            movies["data"].forEach(movie => this.movies.push(new Movie(movie["attributes"]))) //iterates over movies & pushes into empty movies array
+            movies["data"].sort((a, b) => a.id - b.id).forEach(movie => this.movies.push(new Movie(movie["attributes"]))) //iterates over movies & pushes into empty movies array
         })
         .then(() => {
             this.render()
