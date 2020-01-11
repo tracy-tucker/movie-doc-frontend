@@ -38,8 +38,9 @@ class Movies {
         })
     }
 
-    handleMovieClick() {
-        
+    handleMovieClick(e) {
+        const li = e.target
+        li.contentEditable = true
     }
 
     // createNewMovieButton() {
