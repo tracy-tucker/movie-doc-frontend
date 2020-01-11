@@ -23,7 +23,7 @@ class MoviesAdapter {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(movie)
-        })
+        }).then(res => res.json())
     }
 
     updateMovie(value, id) {

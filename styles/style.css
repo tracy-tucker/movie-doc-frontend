@@ -9,3 +9,8 @@ h1 {
     padding: 20px;
     color: blue;
 }
+
+ul {
+    list-style-type: circle;
+}
+    
