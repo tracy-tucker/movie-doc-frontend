@@ -1,5 +1,5 @@
 //THIS NEEDS TO BE ADDED!
 //document.addEventListener("DOMContentLoaded", () => {})
 
-//Creates an instance of a new app
+//Creates a new instance of the app component
 const app = new App()

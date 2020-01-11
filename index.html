@@ -2,8 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="styles/style.css">
+        
         <title>Movie Doc App</title>
     </head>
 
@@ -11,21 +14,35 @@
         <div class="container">
             <h1>Movie Doc App</h1>
             <div id="new-movie-container">
-                <!-- <h2>All Saved Movies</h2> -->
-                <div id="new-movie-form">
-                    <!-- <input type="text" name="movie-title" id="new-movie-title" />
-                    <input type="submit" /> -->
-                </div>
+                <h2>All Saved Movies</h2>
+                <form id="new-movie-form">
+                    <label for="title">Movie Title</label>
+                    <input type="text" name="movie-title" id="new-movie-title"><br>
+                    <label for="title">Genre</label>
+                    <input type="text" name="movie-genre" id="new-movie-genre"><br>
+                    <label for="title">Year</label>
+                    <input type="text" name="movie-year" id="new-movie-year"><br>
+                    <label for="title">Rating</label>
+                    <input type="text" name="movie-raing" id="new-movie-rating"><br>
+                    <label for="title">Description</label>
+                    <input type="text" name="movie-description" id="new-movie-description"><br>
+                    <input type="submit" value="Record Movie">
+                </form>
+                <!-- <div id="new-movie-form">
+                    <input type="text" name="movie-title" id="new-movie-title" />
+                    <input type="submit" />
+                </div> -->
             </div>
-            
-            <div id="movies-container">
-                <!--holds spot for JS rendering of all movies in DB-->
-                <div id="movies-show">
-                    
+            <div id="movies-content">
+                <div id="movies-container">
+                <!--Shows all current movies-->
+                </div>
+                <div id="movie-show">
+                <!--Shows individual movies, when clicked-->
                 </div>
             </div>
         </div>
-        <script src="src/components/movie.js"></script>
+        <script type="text/javascript" src="src/components/movie.js"></script>
         <script src="src/components/movies.js"></script>
         <script src="src/components/app.js"></script>
         <script src="src/adapters/MoviesAdapter.js"></script>
