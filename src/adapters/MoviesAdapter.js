@@ -15,7 +15,7 @@ class MoviesAdapter {
 
     createMovie(value) {
         const movie = {
-            body: value
+            movie: value
         }
         return fetch(this.baseUrl, {
             method: 'POST',
