@@ -1,7 +1,15 @@
 /*Styles go here*/
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 h1 {
-    color: red;
+    color: #cc5500;
+}
+
+h2 {
+    color: #666547;
 }
 
 .editable {
@@ -14,3 +22,7 @@ ul {
     list-style-type: circle;
 }
     
+input[class="title"], input[class="genre"], input[class="year"], input[class="rating"], input[class="desc"] {
+    font-family: fontAwesome;
+    font-size: 24px;
+}
