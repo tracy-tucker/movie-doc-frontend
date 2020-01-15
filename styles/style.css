@@ -1,15 +1,34 @@
 /*Styles go here*/
 
+/*----- GENERAL STYLING -----*/
 body {
     font-family: 'Roboto', sans-serif;
 }
 
 h1 {
-    color: #cc5500;
+    color: #cc5508;
+    text-align: center;
 }
 
 h2 {
-    color: #666547;
+    color: #0e9787;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 15px;
+}
+
+input {
+    width: 100%;
+}
+
+#new-movie-container {
+    width: 75%;
+    margin: 0 auto;
+    background-color: #E0EDEB;
+    padding: 20px;
 }
 
 .editable {
@@ -18,11 +37,21 @@ h2 {
     color: blue;
 }
 
-ul {
-    list-style-type: circle;
-}
     
 input[class="title"], input[class="genre"], input[class="year"], input[class="rating"], input[class="desc"] {
     font-family: fontAwesome;
     font-size: 24px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #3f0487;
+    color: #e0edeb;
+    padding: 10px;
+}
+
+.button {
+    text-align: center;
 }

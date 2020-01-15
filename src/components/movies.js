@@ -3,7 +3,6 @@ class Movies {
         this.movies = [] //contains all movies
         this.adapter = new MoviesAdapter() //creates a new adapter
         this.initBindingAndEventListeners() //envokes this method
-        // this.createNewMovieButton() //calls the movie button function created below
         this.fetchAndLoadMovies()
     }
 
@@ -18,13 +17,11 @@ class Movies {
         this.movieForm = document.getElementById('new-movie-form')
         this.movieForm.addEventListener('submit', this.createMovie.bind(this)) //binding "this" to Movie, and not the movie-form
         this.moviesContainer.addEventListener('dblclick', this.handleMovieClick.bind(this))
-        this.moviesContainer.addEventListener('blur', this.updateMovie.bind(this), true) //NOT WORKING
+        this.moviesContainer.addEventListener('blur', this.updateMovie.bind(this), true)
     }
 
     createMovie(e) {
         e.preventDefault()
-        // const value = this.newMovieTitle.value
-        // THIS IS WHAT I'M TRYING TO DO IN ORDER TO HAVE ALL PROPERTIES FOR MOVIE
         const value = {
             title: this.newMovieTitle.value,
             genre_id: this.newMovieGenre.value,
@@ -35,7 +32,7 @@ class Movies {
 
         this.adapter.createMovie(value).then(movie => {
             this.movies.push(new Movie(movie.data)) //pushed new movie onto the array
-            this.newMovieTitle.value = '' //DO FOR EACH PROPORTY
+            this.newMovieTitle.value = '' //clears out input field after movie is recorded
             this.newMovieGenre.value = ''
             this.newMovieYear.value = ''
             this.newMovieRating.value = ''
@@ -68,17 +65,6 @@ class Movies {
         this.adapter.updateMovie({[attr]:newValue}, id)
     }
 
-    // createNewMovieButton() {
-    //     this.movieFormDiv.innerHTML = ''
-    //     const new_movie_button = document.createElement('button')
-    //     new_movie_button.id = 'new-movie-button'
-    //     new_movie_button.innerText = 'Record a Movie'
-    //     const linebreak = document.createElement('br')
-    //     new_movie_button.appendChild(linebreak)
-    //     this.movieFormDiv.append(new_movie_button)
-    //     new_movie_button.addEventListener('click', this.adapter.renderNewMovieForm.bind(this.adapter))
-    // }
-
     fetchAndLoadMovies() {
         this.adapter
         .getMovies() //gets movies from server
@@ -94,4 +80,5 @@ class Movies {
     render() {
         this.moviesContainer.innerHTML = this.movies.map(movie => movie.renderLi()).join(' ')
     }
+
 }

@@ -8,7 +8,7 @@ class Movie {
         this.genre_id = movieJSON.attributes.genre_id
     }
 
-    renderLi() { //ID IS COMING IN AS UNDEFINED!
+    renderLi() {
         return `<ul>
             <li data-id=${this.id} data-attribute='title'>${this.title}</li>
             <li data-id=${this.id} data-attribute='genre_id'>${this.genre_id}</li>
