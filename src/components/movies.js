@@ -24,7 +24,7 @@ class Movies {
         e.preventDefault()
         const value = {
             title: this.newMovieTitle.value,
-            genre_id: this.newMovieGenre.value,
+            genre_name: this.newMovieGenre.value,
             year: this.newMovieYear.value,
             rating: this.newMovieRating.value,
             description: this.newMovieDescription.value
@@ -69,7 +69,7 @@ class Movies {
         this.adapter
         .getMovies() //gets movies from server
         .then(movies => {
-            movies["data"].sort((a, b) => a.id - b.id).forEach(movie => this.movies.push(new Movie(movie))) //iterates over movies & pushes into empty movies array
+            movies["data"].forEach(movie => this.movies.push(new Movie(movie))) //iterates over movies & pushes into empty movies array
         })
         .then(() => {
             this.render()
