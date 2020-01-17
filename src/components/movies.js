@@ -24,7 +24,7 @@ class Movies {
         e.preventDefault()
         const value = {
             title: this.newMovieTitle.value,
-            genre: {name: this.newMovieGenre.value},
+            genre_attributes: {name: this.newMovieGenre.value},
             year: this.newMovieYear.value,
             rating: this.newMovieRating.value,
             description: this.newMovieDescription.value

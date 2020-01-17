@@ -5,13 +5,13 @@ class Movie {
         this.year = movieJSON.attributes.year
         this.rating = movieJSON.attributes.rating
         this.description = movieJSON.attributes.description
-        this.genre = movieJSON.attributes.genre.name //changed from attributes.genre_id
+        this.genre = movieJSON.attributes.genre //changed from attributes.genre_id
     }
 
     renderLi() {
         return `<ul>
             <li data-id=${this.id} data-attribute='title'>${this.title}</li>
-            <li data-id=${this.id} data-attribute='genre'>${this.genre}</li>
+            <li data-id=${this.id} data-attribute='genre'>${this.genre.name}</li>
             <ul>
                 <li data-id=${this.id} data-attribute='year'>${this.year}</li>
                 <li data-id=${this.id} data-attribute='rating'>${this.rating}</li>
