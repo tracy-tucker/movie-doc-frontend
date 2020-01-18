@@ -16,17 +16,19 @@
         <div class="container form">
             <h1>Movie Record App</h1>
             <div id="new-movie-container">
+                <!-- <p><%= flash[:error] %></p> -->
                 <form id="new-movie-form">
                     <i class="fas fa-film"></i> <label for="title">Movie Title</label><br>
-                    <input class="title" type="text" name="movie-title" id="new-movie-title"><br>
+                    <input class="title" type="text" name="movie-title" id="new-movie-title" required placeholder="Enter title"><br>
                     <i class="fas fa-compact-disc"></i> <label for="genre">Genre</label><br>
                     <input class="genre" type="text" name="movie-genre" id="new-movie-genre"><br>
+                    <!-- <select class="genre" name="movie-genre" id="new-movie-genre" placeholder="Choose Genre"></select><br> attempting dropdown -->
                     <i class="fas fa-calendar-alt"></i> <label for="year">Year</label><br>
                     <input class="year" type="text" name="movie-year" id="new-movie-year"><br>
                     <i class="fas fa-file-video"></i> <label for="rating">Rating</label><br>
                     <input class="rating" type="text" name="movie-rating" id="new-movie-rating"><br>
                     <i class="fas fa-file-alt"></i> <label for="description">Description</label><br>
-                    <input class="desc" type="textarea" name="movie-description" id="new-movie-description"><br>
+                    <input class="desc" type="textarea" name="movie-description" id="new-movie-description" required placeholder="Enter description"><br>
                     <div class="button">
                         <button type="submit" value="Record Movie">Record Movie</button>
                     </div>
@@ -36,11 +38,11 @@
         <hr>
             <div id="movies-content">
                 <h2>All Saved Movies</h2>
+                <div class = "sort-options">
+                    <button id="title-options">Sort by Title</button> | <button id="genre-options">Sort by Genre</button id="year-options"> | <button>Sort by Year</button>
+                </div>
                 <div id="movies-container">
                 <!--Shows all current movies-->
-                </div>
-                <div id="movie-show">
-                <!--Shows individual movies, when clicked-->
                 </div>
             </div>
         </div>

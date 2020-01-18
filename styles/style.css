@@ -31,6 +31,8 @@ input {
     padding: 20px;
 }
 
+/* ----- STYLING WHEN CONTENT IS EDITABLE -----*/
+
 .editable {
     border: 1px solid blue;
     padding: 20px;
@@ -39,7 +41,6 @@ input {
 
     
 input[class="title"], input[class="genre"], input[class="year"], input[class="rating"], input[class="desc"] {
-    font-family: fontAwesome;
     font-size: 24px;
     padding: 12px 20px;
     margin: 8px 0;
@@ -53,5 +54,9 @@ button {
 }
 
 .button {
+    text-align: center;
+}
+
+.sort-options {
     text-align: center;
 }
