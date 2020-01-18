@@ -8,7 +8,7 @@ class Movies {
 
     initBindingAndEventListeners() {
         this.moviesContainer = document.getElementById('movies-container')
-        // this.titleOptions = document.getElementById('title-options') //sorting by alpha title
+        this.titleOptions = document.getElementById('title-options') //sorting by alpha title
         // this.genreOptions = document.getElementById('genre-options') //sorting by alpha genre
         // this.yearOptions = document.getElementById('year-options') //sorting by number year
         this.newMovieTitle = document.getElementById('new-movie-title')
@@ -21,7 +21,7 @@ class Movies {
         this.movieForm.addEventListener('submit', this.createMovie.bind(this)) //binding "this" to Movie, and not the movie-form
         this.moviesContainer.addEventListener('dblclick', this.handleMovieClick.bind(this))
         this.moviesContainer.addEventListener('blur', this.updateMovie.bind(this), true)
-        // this.titleOptions.addEventListener('click', this.sortTitles.bind(this)) //sorting by alpha title
+        this.titleOptions.addEventListener('click', this.sortTitles.bind(this)) //sorting by alpha title
         // this.genreOptions.addEventListener('click', this.sortGenres.bind(this)) //sorting by alpha Genre
         // this.yearOptions.addEventListener('click', this.sortYears.bind(this)) //sorting by number year
     }
@@ -84,7 +84,7 @@ class Movies {
 
     updateMovie(e) {
         const li = e.target
-        console.log(li)
+        // console.log(li)
         li.contentEditable = false
         li.classList.remove('editable')
         const newValue = li.innerHTML
@@ -103,6 +103,16 @@ class Movies {
             this.render()
         })
     }
+
+    // sortTitles() {
+    //     console.log(this.movies[0].title)
+
+        // let t = this.movies
+        // for(let i = 0; i < t.length; i++) {
+        //         console.log(t[i].title)
+        // }
+    
+    // }
 
     //call this method AFTER app grabs all movies
     render() {

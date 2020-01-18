@@ -60,3 +60,15 @@ button {
 .sort-options {
     text-align: center;
 }
+
+li[data-attribute="title"] {
+    color: #cc5508;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+li[data-attribute="genre"] {
+    color: #0e9787;
+    font-weight: bold;
+    font-size: 18px;
+}
