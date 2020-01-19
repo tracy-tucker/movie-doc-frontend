@@ -10,13 +10,12 @@ class Movie {
 
     renderLi() {
         return `<ul>
-            <li data-id=${this.id} data-attribute='title'>TITLE: ${this.title}</li>
-            <li data-id=${this.id} data-attribute='genre'>GENRE: ${this.genre.name}</li>
-            <ul>
-                <li data-id=${this.id} data-attribute='year'>YEAR: ${this.year}</li>
-                <li data-id=${this.id} data-attribute='rating'>RATING: ${this.rating}</li>
-                <li data-id=${this.id} data-attribute='description'>DESCRIPTION: ${this.description}</li>
-            </ul>
+            <li data-id=${this.id} data-attribute='title'>${this.title}</li>
+            <li data-id=${this.id} data-attribute='genre'>${this.genre.name}</li>
+            <li data-id=${this.id} data-attribute='year'>${this.year}</li>
+            <li data-id=${this.id} data-attribute='rating'>${this.rating}</li>
+            <li data-id=${this.id} data-attribute='description'>${this.description}</li>
+            <button class="removable" data-movie-id=${this.id}>Delete Movie</button>
         </ul>`
     }
 }

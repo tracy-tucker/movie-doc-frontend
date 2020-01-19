@@ -35,4 +35,12 @@ class MoviesAdapter {
         })
     }
 
+    deleteMovie(id) {
+        fetch(`${this.baseUrl}/${id}`, {
+            method: "DELETE",
+        })
+        .then(resp => resp.json())
+        // .then(resp => {return resp})
+    }
+
 }

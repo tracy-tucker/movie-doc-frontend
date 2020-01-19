@@ -21,6 +21,7 @@ class Movies {
         this.movieForm.addEventListener('submit', this.createMovie.bind(this)) //binding "this" to Movie, and not the movie-form
         this.moviesContainer.addEventListener('dblclick', this.handleMovieClick.bind(this))
         this.moviesContainer.addEventListener('blur', this.updateMovie.bind(this), true)
+        this.moviesContainer.addEventListener('click', this.deleteMovie.bind(this), true)
         this.titleOptions.addEventListener('click', this.sortTitles.bind(this)) //sorting by alpha title
         // this.genreOptions.addEventListener('click', this.sortGenres.bind(this)) //sorting by alpha Genre
         // this.yearOptions.addEventListener('click', this.sortYears.bind(this)) //sorting by number year
@@ -93,26 +94,43 @@ class Movies {
         this.adapter.updateMovie({[attr]:newValue}, id)
     }
 
+    deleteMovie(e) {
+        e.preventDefault()
+        const li = e.target
+        if (li.attributes && li.attributes.class && li.attributes.class.value === 'removable') {
+            const id = li.dataset.movieId
+            this.adapter.deleteMovie(id)
+            li.parentElement.remove()
+        }
+    }
+
     fetchAndLoadMovies() {
         this.adapter
         .getMovies() //gets movies from server
         .then(movies => {
-            movies["data"].forEach(movie => this.movies.push(new Movie(movie))) //iterates over movies & pushes into empty movies array
+            movies["data"].sort((a,b) => a.id- b.id).forEach(movie => this.movies.push(new Movie(movie))) //iterates over movies & pushes into empty movies array
         })
         .then(() => {
             this.render()
         })
     }
 
-    // sortTitles() {
-    //     console.log(this.movies[0].title)
+    sortTitles() {
+        console.log(this.movies[0].title)
+        // this.movies["data"].attributes.title.sort((a,b) => a - b)
 
-        // let t = this.movies
-        // for(let i = 0; i < t.length; i++) {
-        //         console.log(t[i].title)
-        // }
+        let t = this.movies
+        
+        for(let i = 0; i < t.length; i++) {
+            t[i].title
+                // function sort(a,b) {
+                //     let y = y.replace(/^the /i, '')
+                //     let z = z.replace(/^the /i, '')
+                //     return y.t[i].title - z.t[i].title
+                // }
+        }
     
-    // }
+    }
 
     //call this method AFTER app grabs all movies
     render() {
