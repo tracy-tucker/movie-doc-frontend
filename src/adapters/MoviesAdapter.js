@@ -1,10 +1,11 @@
-//Communicates with the API
+//Communicates with the backend API
 class MoviesAdapter {
     constructor() {
         this.baseUrl = 'http://localhost:3000/api/v1/movies'
         // this.initBindingAndEventListeners()
     }
 
+    //makes a fetch request to the baseURL which then parses the JSON response.
     getMovies() {
         return fetch(this.baseUrl).then(res => res.json())
     }
