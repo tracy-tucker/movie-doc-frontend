@@ -51,6 +51,10 @@ class Movies {
 
     createMovie(e) {
         e.preventDefault()
+        console.log(this)
+        // When do we have access to the user's input?
+        // Iterate over the form values
+        // If empty string, display message to DOM
         const value = {
             title: this.newMovieTitle.value,
             genre_attributes: {name: this.newMovieGenre.value},
@@ -58,14 +62,15 @@ class Movies {
             rating: this.newMovieRating.value,
             description: this.newMovieDescription.value
         }
-
+        
         this.adapter.createMovie(value).then(movie => {
             this.movies.push(new Movie(movie.data)) //pushed new movie onto the array
-            this.newMovieTitle.value = '' //clears out input field after movie is recorded
-            this.newMovieGenre.value = ''
-            this.newMovieYear.value = ''
-            this.newMovieRating.value = ''
-            this.newMovieDescription.value = ''
+            
+            // this.newMovieTitle.value = '' //clears out input field after movie is recorded
+            // this.newMovieGenre.value = ''
+            // this.newMovieYear.value = ''
+            // this.newMovieRating.value = ''
+            // this.newMovieDescription.value = ''
             this.render() //shows new movie in browser
         })
     }
