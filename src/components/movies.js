@@ -49,12 +49,23 @@ class Movies {
     //     })
     // }
 
+    validateForm(values) {
+         let title = values.title;
+         let genre = values.genre_attributes.name;
+         let year = values.year;
+         let rating = values.rating;
+         let description = values.description;
+        if ((title == null || title == "") || (genre == null || genre == "") || (year == null || year == "") && (rating == null || rating == "") || (description == null || description == "")) {
+          alert("Please Fill All Required Fields");
+          return false;
+        }
+        else {
+            return true;
+        }
+      }
+
     createMovie(e) {
         e.preventDefault()
-        console.log(this)
-        // When do we have access to the user's input?
-        // Iterate over the form values
-        // If empty string, display message to DOM
         const value = {
             title: this.newMovieTitle.value,
             genre_attributes: {name: this.newMovieGenre.value},
@@ -62,17 +73,19 @@ class Movies {
             rating: this.newMovieRating.value,
             description: this.newMovieDescription.value
         }
-        
-        this.adapter.createMovie(value).then(movie => {
-            this.movies.push(new Movie(movie.data)) //pushed new movie onto the array
+
+        if (this.validateForm(value)){
             
-            // this.newMovieTitle.value = '' //clears out input field after movie is recorded
-            // this.newMovieGenre.value = ''
-            // this.newMovieYear.value = ''
-            // this.newMovieRating.value = ''
-            // this.newMovieDescription.value = ''
-            this.render() //shows new movie in browser
-        })
+            this.adapter.createMovie(value).then(movie => {
+                this.movies.push(new Movie(movie.data)) //pushed new movie into the array
+                this.newMovieTitle.value = '' //clears out input field after movie is recorded
+                this.newMovieGenre.value = ''
+                this.newMovieYear.value = ''
+                this.newMovieRating.value = ''
+                this.newMovieDescription.value = ''
+                this.render() //shows new movie in browser
+            })
+        }
     }
 
     handleMovieClick(e) {
@@ -90,7 +103,6 @@ class Movies {
 
     updateMovie(e) {
         const li = e.target
-        // console.log(li)
         li.contentEditable = false
         li.classList.remove('editable')
         const newValue = li.innerHTML
@@ -121,19 +133,27 @@ class Movies {
     }
 
     sortTitles() {
-        console.log(this.movies[0].title)
+        console.log(this.movies[0])
+
+        this.movies.sort((a, b) => a.title - b.title);
+        console.log(this.movies);
+        // create a method that does the comparison FIRST, then use the sortTitles() method
+        
+        // this.movies.sort(movieA.title - movieB.title)
+        // return this.movies
+
         // this.movies["data"].attributes.title.sort((a,b) => a - b)
 
-        let t = this.movies
+        // let t = this.movies
         
-        for(let i = 0; i < t.length; i++) {
-            t[i].title
-                // function sort(a,b) {
-                //     let y = y.replace(/^the /i, '')
-                //     let z = z.replace(/^the /i, '')
-                //     return y.t[i].title - z.t[i].title
-                // }
-        }
+        // for(let i = 0; i < t.length; i++) {
+        //     t[i].title
+        //         function sort(a,b) {
+        //             let y = y.replace(/^the /i, '')
+        //             let z = z.replace(/^the /i, '')
+        //             return y.t[i].title - z.t[i].title
+        //         }
+        // }
     
     }
 
