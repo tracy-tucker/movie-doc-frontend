@@ -132,6 +132,27 @@ class Movies {
         })
     }
 
+    // Can this be a general method for sorting BOTH title, genre and year?
+    compareValues(a,b) {
+        // let title = values.title;
+        // let genre = values.genre_attributes.name;
+        // let year = values.year;
+        // let rating = values.rating;
+        // let description = values.description;
+
+        let valueA = a.this.movies.value
+        let valueB = b.this.movies.value
+
+        if (valueA < valueB) {
+            return -1;
+        }
+        if (valueA > valueB) {
+            return 1;
+        }
+        return 0;
+        
+    }
+
     sortTitles() {
         console.log(this.movies[0])
 
