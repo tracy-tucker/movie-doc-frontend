@@ -27,28 +27,6 @@ class Movies {
         // this.yearOptions.addEventListener('click', this.sortYears.bind(this)) //sorting by number year
     }
 
-    // populateGenres() {
-    //     for (let i = 0; i < this.newMovieGenre.value.length; i++) {
-    //         let option = document.createElement('option')
-    //         option.innerText = this.newMovieGenre[i].name
-    //         popgenre.append(option)
-    //     }
-    // }
-
-    // populateGenres(e) {
-    //     const genre = {
-    //         genre_attributes: {name: this.newMovieGenre.value}
-    //     }
-
-    //     this.adapter.populateGenres(genre).then(genre => {
-    //         for (let i = 0; i < this.genre.length; i++) {
-    //             let option = document.createElement('option')
-    //             option.innerText = this.genre[i]
-    //             this.newMovieGenre.options.appendChild(option)
-    //         }
-    //     })
-    // }
-
     validateForm(values) {
          let title = values.title;
          let genre = values.genre_attributes.name;
@@ -125,39 +103,22 @@ class Movies {
         this.adapter
         .getMovies() //gets movies from server
         .then(movies => {
-            movies["data"].sort((a,b) => a.id- b.id).forEach(movie => this.movies.push(new Movie(movie))) //iterates over movies & pushes into empty movies array
+            movies["data"].sort((a,b) => a.id - b.id).forEach(movie => this.movies.push(new Movie(movie))) //iterates over movies & pushes into empty movies array
         })
         .then(() => {
             this.render()
         })
     }
 
-    // Can this be a general method for sorting BOTH title, genre and year?
-    compareValues(a,b) {
-        // let title = values.title;
-        // let genre = values.genre_attributes.name;
-        // let year = values.year;
-        // let rating = values.rating;
-        // let description = values.description;
-
-        let valueA = a.this.movies.value
-        let valueB = b.this.movies.value
-
-        if (valueA < valueB) {
-            return -1;
-        }
-        if (valueA > valueB) {
-            return 1;
-        }
-        return 0;
-        
+    //call this method AFTER app grabs all movies
+    render() {
+        this.moviesContainer.innerHTML = this.movies.map(movie => movie.renderLi()).join(' ')
     }
 
     sortTitles() {
-        console.log(this.movies[0])
+        let sortedMovies = this.movies.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+        console.log(sortedMovies);
 
-        this.movies.sort((a, b) => a.title - b.title);
-        console.log(this.movies);
         // create a method that does the comparison FIRST, then use the sortTitles() method
         
         // this.movies.sort(movieA.title - movieB.title)
@@ -178,9 +139,27 @@ class Movies {
     
     }
 
-    //call this method AFTER app grabs all movies
-    render() {
-        this.moviesContainer.innerHTML = this.movies.map(movie => movie.renderLi()).join(' ')
-    }
 
 }
+
+// populateGenres() {
+    //     for (let i = 0; i < this.newMovieGenre.value.length; i++) {
+    //         let option = document.createElement('option')
+    //         option.innerText = this.newMovieGenre[i].name
+    //         popgenre.append(option)
+    //     }
+    // }
+
+    // populateGenres(e) {
+    //     const genre = {
+    //         genre_attributes: {name: this.newMovieGenre.value}
+    //     }
+
+    //     this.adapter.populateGenres(genre).then(genre => {
+    //         for (let i = 0; i < this.genre.length; i++) {
+    //             let option = document.createElement('option')
+    //             option.innerText = this.genre[i]
+    //             this.newMovieGenre.options.appendChild(option)
+    //         }
+    //     })
+    // }
