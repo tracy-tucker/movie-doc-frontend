@@ -116,8 +116,26 @@ class Movies {
     }
 
     sortTitles() {
-        let sortedMovies = this.movies.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
-        console.log(sortedMovies);
+        // let sortedMovies = this.movies.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+    
+        fetch('http://localhost:3000/api/v1/movies')
+        .then(res => res.json())
+        .then(movies => {
+            movies.data.sort(function(a, b) {
+                var titleA = a.attributes.title.toUpperCase(); // ignore upper and lowercase
+                var titleB = b.attributes.title.toUpperCase(); // ignore upper and lowercase
+                if (titleA < titleB) {
+                  return -1;
+                }
+                if (titleA > titleB) {
+                  return 1;
+                }
+              
+                // names must be equal
+                return 0;
+              });
+              console.log(movies)
+        }) 
 
         // create a method that does the comparison FIRST, then use the sortTitles() method
         
