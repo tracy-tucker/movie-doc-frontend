@@ -120,8 +120,8 @@ class Movies {
     
         fetch('http://localhost:3000/api/v1/movies')
         .then(res => res.json())
-        .then(movies => {
-            movies.data.sort(function(a, b) {
+        .then(rawMovies => {
+            rawMovies.data.sort(function(a, b) {
                 var titleA = a.attributes.title.toUpperCase(); // ignore upper and lowercase
                 var titleB = b.attributes.title.toUpperCase(); // ignore upper and lowercase
                 if (titleA < titleB) {
@@ -134,7 +134,9 @@ class Movies {
                 // names must be equal
                 return 0;
               });
-              console.log(movies)
+              this.movies = [];
+              rawMovies.data.forEach(movie => this.movies.push(new Movie(movie)))
+              this.render();
         }) 
 
         // create a method that does the comparison FIRST, then use the sortTitles() method
